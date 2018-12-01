@@ -42,7 +42,7 @@ namespace Presentacion
             string calle = TextCalle.Text;
             int resultado = negocio.Insert( rut,  nombre,  apellido,  calle,  numero,  comuna);
             if (resultado > 0)
-                lblMensaje.Text = "Datos actualizados";
+                lblMensaje.Text = "Nuevo Registro Agregado Satisfactoriamente.";
             else
                 lblMensaje.Text = "Rut:  [<b>" + txtRut.Text + "</b>] ya existe, agrege otro";
             negocio = null;
@@ -71,7 +71,7 @@ namespace Presentacion
             string calle = TextCalle.Text;
             int resultado = negocio.Modificar(rut, nombre, apellido, calle, numero, comuna);
             if (resultado > 0)
-                lblMensaje.Text = "Nuevo Registro Agregado Satisfactoriamente.";
+                lblMensaje.Text = "Datos actualizados";
             else
                 lblMensaje.Text = "Rut:  [<b>" + txtRut.Text + "</b>] ya existe, agrege otro";
             negocio = null;

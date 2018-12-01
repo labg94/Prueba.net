@@ -26,25 +26,25 @@ namespace Presentacion
                 return;
             AccesoLogica negocio = new AccesoLogica();
 
-            valApellido.Enabled = true;
-            valCalle.Enabled = true;
-            valComuna.Enabled = true;
+            valModelo.Enabled = true;
+            valAnnio.Enabled = true;
             valRut.Enabled = true;
-            valNombre.Enabled = true;
-            valNumero.Enabled = true;
+            valPatente.Enabled = true;
+            valMarca.Enabled = true;
+            valColor.Enabled = true;
 
 
+            string patente = txtPatente.Text;
+            string marca = txtMarca.Text;
+            string modelo = txtModelo.Text;
+            string color = TextColor.Text;
             int rut = Int32.Parse(txtRut.Text);
-            string nombre = txtNombre.Text;
-            string apellido = txtApellido.Text;
-            int numero = Int32.Parse(txtNumero.Text);
-            string comuna = TextComuna.Text;
-            string calle = TextCalle.Text;
-            int resultado = negocio.Insert(rut, nombre, apellido, calle, numero, comuna);
+            int annio = Int32.Parse(TextAnnio.Text);
+            int resultado = negocio.InsertVehiculo(patente, marca, modelo, annio, color, rut);
             if (resultado > 0)
-                lblMensaje.Text = "Datos actualizados";
+                lblMensaje.Text = "Nuevo Registro Agregado Satisfactoriamente.";
             else
-                lblMensaje.Text = "Rut:  [<b>" + txtRut.Text + "</b>] ya existe, agrege otro";
+                lblMensaje.Text = "Patente:  [<b>" + txtPatente.Text + "</b>] ya existe, agrege otro";
             negocio = null;
         }
 
@@ -55,55 +55,69 @@ namespace Presentacion
                 return;
             AccesoLogica negocio = new AccesoLogica();
 
-            valApellido.Enabled = true;
-            valCalle.Enabled = true;
-            valComuna.Enabled = true;
+            valModelo.Enabled = true;
+            valAnnio.Enabled = true;
             valRut.Enabled = true;
-            valNombre.Enabled = true;
-            valNumero.Enabled = true;
+            valPatente.Enabled = true;
+            valMarca.Enabled = true;
+            valColor.Enabled = true;
 
 
+            string patente = txtPatente.Text;
+            string marca = txtMarca.Text;
+            string modelo = txtModelo.Text;
+            string color = TextColor.Text;
             int rut = Int32.Parse(txtRut.Text);
-            string nombre = txtNombre.Text;
-            string apellido = txtApellido.Text;
-            int numero = Int32.Parse(txtNumero.Text);
-            string comuna = TextComuna.Text;
-            string calle = TextCalle.Text;
-            int resultado = negocio.Modificar(rut, nombre, apellido, calle, numero, comuna);
+            int annio = Int32.Parse(TextAnnio.Text);
+            int resultado = negocio.ModificarVehiculo(patente, marca, modelo, annio, color, rut);
             if (resultado > 0)
-                lblMensaje.Text = "Nuevo Registro Agregado Satisfactoriamente.";
+                lblMensaje.Text = "Datos actualizados";
             else
-                lblMensaje.Text = "Rut:  [<b>" + txtRut.Text + "</b>] ya existe, agrege otro";
+                lblMensaje.Text = "Patente:  [<b>" + txtPatente.Text + "</b>] ya existe, agrege otro";
             negocio = null;
         }
 
 
         protected void gvMostrar(object sender, EventArgs e)
         {
-            valApellido.Enabled = false;
-            valCalle.Enabled = false;
-            valComuna.Enabled = false;
+            valModelo.Enabled = false;
+            valAnnio.Enabled = false;
             valRut.Enabled = false;
-            valNombre.Enabled = false;
-            valNumero.Enabled = false;
+            valPatente.Enabled = false;
+            valMarca.Enabled = false;
+            valColor.Enabled = false;
 
-            GridView.DataSource = AccesoLogica.();
+            GridView.DataSource = AccesoLogica.ObtenerVehiculos();
             GridView.DataBind();
-            txtNumero.Text = txtNombre.Text = txtApellido.Text = txtRut.Text = TextCalle.Text = TextComuna.Text = "";
+            TextColor.Text = txtMarca.Text = txtModelo.Text = txtPatente.Text = TextAnnio.Text = txtRut.Text = "";
         }
 
-        protected void PersonaBuscar(object sender, EventArgs e)
+        protected void BuscarPatente(object sender, EventArgs e)
         {
-            valApellido.Enabled = false;
-            valCalle.Enabled = false;
-            valComuna.Enabled = false;
-            valRut.Enabled = true;
-            valNombre.Enabled = false;
-            valNumero.Enabled = false;
+            valModelo.Enabled = false;
+            valAnnio.Enabled = false;
+            valRut.Enabled = false;
+            valPatente.Enabled = true;
+            valMarca.Enabled = false;
+            valColor.Enabled = false;
 
-            GridView.DataSource = AccesoLogica.BuscarPersona(Int32.Parse(txtRut.Text));
+            GridView.DataSource = AccesoLogica.BuscarVehiculoPatente(txtPatente.Text);
             GridView.DataBind();
-            txtNumero.Text = txtNombre.Text = txtApellido.Text = txtRut.Text = TextCalle.Text = TextComuna.Text = "";
+            TextColor.Text = txtMarca.Text = txtModelo.Text = txtPatente.Text = TextAnnio.Text = txtRut.Text = "";
+        }
+
+        protected void BuscarRut(object sender, EventArgs e)
+        {
+            valModelo.Enabled = false;
+            valAnnio.Enabled = false;
+            valRut.Enabled = true;
+            valPatente.Enabled = false;
+            valMarca.Enabled = false;
+            valColor.Enabled = false;
+
+            GridView.DataSource = AccesoLogica.BuscarVehiculoRut(Int32.Parse(txtRut.Text));
+            GridView.DataBind();
+            TextColor.Text = txtMarca.Text = txtModelo.Text = txtPatente.Text = TextAnnio.Text = txtRut.Text = "";
         }
     }
 }

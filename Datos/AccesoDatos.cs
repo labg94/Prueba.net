@@ -91,7 +91,7 @@ namespace Datos
         public static DataTable BuscarVehiculoPatente(string patente)
         {
             SqlCommand _comando = MetodosDatos.CrearComando();
-            _comando.CommandText = "SELECT * FROM VEHICULO where patente=" + patente;
+            _comando.CommandText = "SELECT * FROM VEHICULO where patente='" + patente +"'";
             return MetodosDatos.EjecutarComandoSelect(_comando);
         }
     }
