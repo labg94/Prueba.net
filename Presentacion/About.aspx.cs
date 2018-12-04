@@ -75,6 +75,13 @@ namespace Presentacion
             else
                 lblMensaje.Text = "Patente:  [<b>" + txtPatente.Text + "</b>] ya existe, agrege otro";
             negocio = null;
+
+            valModelo.Enabled = true;
+            valAnnio.Enabled = true;
+            valRut.Enabled = true;
+            valPatente.Enabled = true;
+            valMarca.Enabled = true;
+            valColor.Enabled = true;
         }
 
 
@@ -90,6 +97,13 @@ namespace Presentacion
             GridView.DataSource = AccesoLogica.ObtenerVehiculos();
             GridView.DataBind();
             TextColor.Text = txtMarca.Text = txtModelo.Text = txtPatente.Text = TextAnnio.Text = txtRut.Text = "";
+
+            valModelo.Enabled = true;
+            valAnnio.Enabled = true;
+            valRut.Enabled = true;
+            valPatente.Enabled = true;
+            valMarca.Enabled = true;
+            valColor.Enabled = true;
         }
 
         protected void BuscarPatente(object sender, EventArgs e)
@@ -104,6 +118,13 @@ namespace Presentacion
             GridView.DataSource = AccesoLogica.BuscarVehiculoPatente(txtPatente.Text);
             GridView.DataBind();
             TextColor.Text = txtMarca.Text = txtModelo.Text = txtPatente.Text = TextAnnio.Text = txtRut.Text = "";
+
+            valModelo.Enabled = true;
+            valAnnio.Enabled = true;
+            valRut.Enabled = true;
+            valPatente.Enabled = true;
+            valMarca.Enabled = true;
+            valColor.Enabled = true;
         }
 
         protected void BuscarRut(object sender, EventArgs e)
@@ -118,6 +139,13 @@ namespace Presentacion
             GridView.DataSource = AccesoLogica.BuscarVehiculoRut(Int32.Parse(txtRut.Text));
             GridView.DataBind();
             TextColor.Text = txtMarca.Text = txtModelo.Text = txtPatente.Text = TextAnnio.Text = txtRut.Text = "";
+
+            valModelo.Enabled = true;
+            valAnnio.Enabled = true;
+            valRut.Enabled = true;
+            valPatente.Enabled = true;
+            valMarca.Enabled = true;
+            valColor.Enabled = true;
         }
     }
 }
